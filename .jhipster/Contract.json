@@ -1,0 +1,52 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "person",
+      "otherEntityName": "person",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "company",
+      "otherEntityName": "company",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "contractNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "month",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20160228133321",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no"
+}

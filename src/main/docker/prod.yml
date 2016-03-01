@@ -1,0 +1,18 @@
+myplanning-elasticsearch:
+  container_name: myplanning-elasticsearch
+  image: elasticsearch:1.7.3
+  # volumes:
+  #   - ~/volumes/jhipster/myPlanning/elasticsearch/:/usr/share/elasticsearch/data/
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+myplanning-postgresql:
+  container_name: myplanning-postgresql
+  image: postgres:9.4.5
+  # volumes:
+  #   - ~/volumes/jhipster/myPlanning/postgresql/:/var/lib/postgresql/
+  environment:
+    - POSTGRES_USER=myPlanning
+    - POSTGRES_PASSWORD=
+  ports:
+    - "5432:5432"

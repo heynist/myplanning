@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myContractLabel" translate="myplanningApp.contract.home.createOrEditLabel">Create or edit a Contract</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="contract.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="myplanningApp.contract.startDate" for="field_startDate">StartDate</label>
+                <div class="input-group">
+                    <input id="field_startDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="contract.startDate" is-open="datePickerForStartDate.status.opened"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForStartDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.startDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="myplanningApp.contract.endDate" for="field_endDate">EndDate</label>
+                <div class="input-group">
+                    <input id="field_endDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="contract.endDate" is-open="datePickerForEndDate.status.opened"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="datePickerForEndDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="myplanningApp.contract.contractNumber" for="field_contractNumber">ContractNumber</label>
+            <input type="text" class="form-control" name="contractNumber" id="field_contractNumber"
+                    ng-model="contract.contractNumber"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="myplanningApp.contract.year" for="field_year">Year</label>
+            <input type="number" class="form-control" name="year" id="field_year"
+                    ng-model="contract.year"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="myplanningApp.contract.month" for="field_month">Month</label>
+            <input type="number" class="form-control" name="month" id="field_month"
+                    ng-model="contract.month"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="myplanningApp.contract.person" for="field_person">person</label>
+            <select class="form-control" id="field_person" name="person" ng-model="contract.person" ng-options="person as (person.firstName + ' ' + person.lastName) for person in persons | orderBy:['lastName','firstName'] track by person.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="myplanningApp.contract.company" for="field_company">company</label>
+            <select class="form-control" id="field_company" name="company" ng-model="contract.company" ng-options="company as company.name for company in companys | orderBy:'name' track by company.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

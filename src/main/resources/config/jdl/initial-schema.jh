@@ -1,0 +1,30 @@
+entity Person {
+    firstName String required
+    lastName String required
+    email String required
+    mobile String
+}
+
+entity Company {
+    name String required
+}
+
+entity Contract {
+    startDate LocalDate required
+    endDate LocalDate
+    contractNumber String
+    year Integer
+    month Integer
+}
+
+relationship OneToMany {
+    Person{contract} to Contract{person}
+}
+
+relationship OneToMany {
+    Company{contract} to Contract{company}
+}
+
+relationship OneToMany {
+    User{company} to Company{coordinator}
+}
