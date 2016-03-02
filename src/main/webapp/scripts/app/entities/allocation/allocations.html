@@ -1,20 +1,20 @@
 <div>
-    <h2 translate="myplanningApp.company.home.title">Companies</h2>
+    <h2 translate="myplanningApp.allocation.home.title">Allocations</h2>
     <jh-alert></jh-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="company.new" >
+                <button class="btn btn-primary" ui-sref="allocation.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span 
-class="hidden-xs"                        translate="myplanningApp.company.home.createLabel">Create new Company
+class="hidden-xs"                        translate="myplanningApp.allocation.home.createLabel">Create new Allocation
                     </span>
                 </button>
             </div>
             <div class="col-xs-8 no-padding-right">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'myplanningApp.company.home.search' | translate }}">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'myplanningApp.allocation.home.search' | translate }}">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="search()">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -31,34 +31,42 @@ class="hidden-xs"                        translate="myplanningApp.company.home.c
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span translate="myplanningApp.company.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="company.coordinator"><span translate="myplanningApp.company.coordinator">Coordinator</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDate"><span translate="myplanningApp.allocation.startDate">StartDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDate"><span translate="myplanningApp.allocation.endDate">EndDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="myplanningApp.allocation.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.id"><span translate="myplanningApp.allocation.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="company.id"><span translate="myplanningApp.allocation.company">Company</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="company in companys track by company.id">
-                    <td><a ui-sref="company.detail({id:company.id})">{{company.id}}</a></td>
-                    <td>{{company.name}}</td>
+                <tr ng-repeat="allocation in allocations track by allocation.id">
+                    <td><a ui-sref="allocation.detail({id:allocation.id})">{{allocation.id}}</a></td>
+                        <td>{{allocation.startDate | date:'mediumDate'}}</td>
+                        <td>{{allocation.endDate | date:'mediumDate'}}</td>
+                    <td translate="{{'myplanningApp.AllocationStatus.' + allocation.status}}">{{allocation.status}}</td>
                     <td>
-                        <a ui-sref="user-management-detail({login:company.coordinator.login})">{{company.coordinator.firstName}}&nbsp;{{company.coordinator.lastName}}</a>
+                        <a ui-sref="person.detail({id:allocation.person.id})">{{allocation.person.firstName}} {{allocation.person.lastName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="company.detail({id:allocation.company.id})">{{allocation.company.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="company.detail({id:company.id})"
+                                    ui-sref="allocation.detail({id:allocation.id})"
                                     class="btn btn-info btn-sm"> 
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="company.edit({id:company.id})"
+                                    ui-sref="allocation.edit({id:allocation.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="company.delete({id:company.id})"
+                                    ui-sref="allocation.delete({id:allocation.id})"
                                     class="btn btn-danger btn-sm">                                    
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>

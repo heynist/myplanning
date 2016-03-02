@@ -29,12 +29,12 @@ class="hidden-xs"                        translate="myplanningApp.person.home.cr
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr>
-                    <th><span translate="global.field.id">ID</span></th>
-                    <th><span translate="myplanningApp.person.firstName">FirstName</span></th>
-                    <th><span translate="myplanningApp.person.lastName">LastName</span></th>
-                    <th><span translate="myplanningApp.person.email">Email</span></th>
-                    <th><span translate="myplanningApp.person.mobile">Mobile</span></th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="firstName"><span translate="myplanningApp.person.firstName">FirstName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastName"><span translate="myplanningApp.person.lastName">LastName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span translate="myplanningApp.person.email">Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mobile"><span translate="myplanningApp.person.mobile">Mobile</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>

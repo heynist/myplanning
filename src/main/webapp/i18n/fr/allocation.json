@@ -1,0 +1,27 @@
+{
+    "myplanningApp": {
+        "allocation" : {
+            "home": {
+                "title": "Allocations",
+                "createLabel": "Créer un nouveau Allocation",
+                "createOrEditLabel": "Créer ou éditer un Allocation",
+                "search": "Search for Allocation"
+            },
+            "created": "Un nouveau Allocation a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Allocation avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Allocation avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Allocation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Allocation"
+            },
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "status": "Status",
+            "person": "Person",
+            "company": "Company"
+        }
+    }
+}
+

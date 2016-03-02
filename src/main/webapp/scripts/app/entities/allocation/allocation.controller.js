@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('myplanningApp')
-    .controller('ContractController', function ($scope, $state, Contract, ContractSearch, ParseLinks) {
+    .controller('AllocationController', function ($scope, $state, Allocation, AllocationSearch, ParseLinks) {
 
-        $scope.contracts = [];
+        $scope.allocations = [];
         $scope.predicate = 'endDate';
         $scope.reverse = true;
         $scope.page = 1;
         $scope.loadAll = function() {
-            Contract.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
+            Allocation.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 $scope.totalItems = headers('X-Total-Count');
-                $scope.contracts = result;
+                $scope.allocations = result;
             });
         };
         $scope.loadPage = function(page) {
@@ -21,8 +21,8 @@ angular.module('myplanningApp')
         $scope.loadAll();
 
         $scope.search = function () {
-            ContractSearch.query({query: $scope.searchQuery}, function(result) {
-                $scope.contracts = result;
+            AllocationSearch.query({query: $scope.searchQuery}, function(result) {
+                $scope.allocations = result;
             }, function(response) {
                 if(response.status === 404) {
                     $scope.loadAll();
@@ -36,12 +36,10 @@ angular.module('myplanningApp')
         };
 
         $scope.clear = function () {
-            $scope.contract = {
+            $scope.allocation = {
                 startDate: null,
                 endDate: null,
-                contractNumber: null,
-                year: null,
-                month: null,
+                status: null,
                 id: null
             };
         };

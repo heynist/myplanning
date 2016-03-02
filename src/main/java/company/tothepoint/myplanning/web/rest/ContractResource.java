@@ -5,8 +5,11 @@ import company.tothepoint.myplanning.domain.Contract;
 import company.tothepoint.myplanning.repository.ContractRepository;
 import company.tothepoint.myplanning.repository.search.ContractSearchRepository;
 import company.tothepoint.myplanning.web.rest.util.HeaderUtil;
+import company.tothepoint.myplanning.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -84,10 +87,13 @@ public class ContractResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Contract> getAllContracts() {
+    public ResponseEntity<List<Contract>> getAllContracts(Pageable pageable)
+        throws URISyntaxException {
         log.debug("REST request to get all Contracts");
-        return contractRepository.findAll();
-            }
+        Page<Contract> page = contractRepository.findAll(pageable); 
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/contracts");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * GET  /contracts/:id -> get the "id" contract.

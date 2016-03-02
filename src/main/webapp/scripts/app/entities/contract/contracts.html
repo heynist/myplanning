@@ -29,15 +29,15 @@ class="hidden-xs"                        translate="myplanningApp.contract.home.
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr>
-                    <th><span translate="global.field.id">ID</span></th>
-                    <th><span translate="myplanningApp.contract.startDate">StartDate</span></th>
-                    <th><span translate="myplanningApp.contract.endDate">EndDate</span></th>
-                    <th><span translate="myplanningApp.contract.contractNumber">ContractNumber</span></th>
-                    <th><span translate="myplanningApp.contract.year">Year</span></th>
-                    <th><span translate="myplanningApp.contract.month">Month</span></th>
-                    <th><span translate="myplanningApp.contract.person">Person</span></th>
-                    <th><span translate="myplanningApp.contract.company">Company</span></th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDate"><span translate="myplanningApp.contract.startDate">StartDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDate"><span translate="myplanningApp.contract.endDate">EndDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contractNumber"><span translate="myplanningApp.contract.contractNumber">ContractNumber</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="year"><span translate="myplanningApp.contract.year">Year</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="month"><span translate="myplanningApp.contract.month">Month</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.id"><span translate="myplanningApp.contract.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="company.id"><span translate="myplanningApp.contract.company">Company</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -80,5 +80,8 @@ class="hidden-xs"                        translate="myplanningApp.contract.home.
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>
