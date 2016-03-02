@@ -5,8 +5,11 @@ import company.tothepoint.myplanning.domain.Person;
 import company.tothepoint.myplanning.repository.PersonRepository;
 import company.tothepoint.myplanning.repository.search.PersonSearchRepository;
 import company.tothepoint.myplanning.web.rest.util.HeaderUtil;
+import company.tothepoint.myplanning.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -84,10 +87,13 @@ public class PersonResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Person> getAllPersons() {
+    public ResponseEntity<List<Person>> getAllPersons(Pageable pageable)
+        throws URISyntaxException {
         log.debug("REST request to get all Persons");
-        return personRepository.findAll();
-            }
+        Page<Person> page = personRepository.findAll(pageable); 
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/persons");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * GET  /persons/:id -> get the "id" person.

@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="myplanningApp.allocation.detail.title">Allocation</span> {{allocation.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="myplanningApp.allocation.startDate">StartDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{allocation.startDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="myplanningApp.allocation.endDate">EndDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{allocation.endDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="myplanningApp.allocation.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'myplanningApp.AllocationStatus.' + allocation.status}}">{{allocation.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="myplanningApp.allocation.person">Person</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="person.detail({id:allocation.person.id})">{{allocation.person.firstName}} {{allocation.person.lastName}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="myplanningApp.allocation.company">Company</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="company.detail({id:allocation.company.id})">{{allocation.company.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

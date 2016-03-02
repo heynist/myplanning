@@ -1,0 +1,19 @@
+entity Allocation {
+    startDate LocalDate required,
+    endDate LocalDate required,
+    status AllocationStatus required
+}
+
+enum AllocationStatus {
+    UNCONFIRMED, CONFIRMED
+}
+
+relationship OneToMany {
+    Person{allocation} to Allocation
+}
+
+relationship OneToMany {
+    Company{allocation} to Allocation
+}
+
+paginate Allocation with pagination

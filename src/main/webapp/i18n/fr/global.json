@@ -10,6 +10,7 @@
                 "person": "Person",
                 "company": "Company",
                 "contract": "Contract",
+                "allocation": "Allocation",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

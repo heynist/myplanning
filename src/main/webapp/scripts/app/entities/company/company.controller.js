@@ -1,12 +1,17 @@
 'use strict';
 
 angular.module('myplanningApp')
-    .controller('CompanyController', function ($scope, $state, Company, CompanySearch) {
+    .controller('CompanyController', function ($scope, $state, Company, CompanySearch, ParseLinks) {
 
         $scope.companys = [];
+        $scope.predicate = 'name';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Company.query(function(result) {
-               $scope.companys = result;
+            Company.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
+                $scope.companys = result;
             });
         };
         $scope.loadAll();

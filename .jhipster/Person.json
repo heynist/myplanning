@@ -6,6 +6,13 @@
       "otherEntityName": "contract",
       "relationshipType": "one-to-many",
       "otherEntityRelationshipName": "person"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "allocation",
+      "otherEntityName": "allocation",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "person"
     }
   ],
   "fields": [

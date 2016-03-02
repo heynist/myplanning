@@ -1,0 +1,9 @@
+{
+    "myplanningApp": {
+        "AllocationStatus" : {
+            "null": "",
+            "UNCONFIRMED": "UNCONFIRMED",
+            "CONFIRMED": "CONFIRMED"
+        }
+    }
+}

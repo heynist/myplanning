@@ -9,6 +9,13 @@
     },
     {
       "relationshipId": 2,
+      "relationshipName": "allocation",
+      "otherEntityName": "allocation",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "company"
+    },
+    {
+      "relationshipId": 3,
       "relationshipName": "coordinator",
       "otherEntityName": "user",
       "relationshipType": "many-to-one",
