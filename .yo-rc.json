@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "myPlanning",
+    "packageName": "company.tothepoint.myplanning",
+    "packageFolder": "company/tothepoint/myplanning",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "gulp",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "b3930301f201eeea49df86ce093ba768be64a7cd",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}

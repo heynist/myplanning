@@ -1,0 +1,7 @@
+myplanning-app-elasticsearch:
+  scale: 1
+myplanning-app-postgresql:
+  scale: 1
+myplanning-app:
+  scale: 1
+  
