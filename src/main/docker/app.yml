@@ -1,0 +1,22 @@
+myplanning-app-elasticsearch:
+  container_name: myplanning-app-elasticsearch
+  image: elasticsearch:1.7.3
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+myplanning-app-postgresql:
+  container_name: myplanning-app-postgresql
+  image: postgres:9.4.5
+  environment:
+    - POSTGRES_USER=myPlanning
+    - POSTGRES_PASSWORD=
+  ports:
+    - "5432:5432"
+myplanning-app:
+  container_name: myplanning-app
+  image: heynist/myplanning:latest
+  ports:
+    - "8080:8080"
+  links:
+    - "myplanning-app-elasticsearch:elastic"
+    - "myplanning-app-postgresql:postgresql"

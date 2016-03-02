@@ -13,6 +13,7 @@ buildscript {
         classpath group: 'org.springframework.build.gradle', name: 'propdeps-plugin', version: '0.0.7'
         classpath group: 'com.moowork.gradle', name: 'gradle-node-plugin', version: '0.11'
   	    classpath group: 'com.moowork.gradle', name: 'gradle-gulp-plugin', version: '0.11'
+        classpath group: 'se.transmode.gradle', name: 'gradle-docker', version: '1.2'
         //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
     }
 }
@@ -63,6 +64,7 @@ apply from: 'liquibase.gradle'
 
 apply from: 'gatling.gradle'
 apply from: 'mapstruct.gradle'
+apply from: 'docker.gradle'
 //jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
 
 if (project.hasProperty('prod')) {
